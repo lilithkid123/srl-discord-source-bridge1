@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "srl-discord-source-bridge1",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-26",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "srl-discord-source-handoff",
+      "migrations_dir": "migrations","database_id": "7d2bfd1a-9cca-4637-8527-b90cd92bbd3b",
+    },
+  ],
+  "vars": {
+    "HANDOFF_TTL_SECONDS": "1200",
+  },
+}

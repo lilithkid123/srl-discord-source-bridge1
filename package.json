@@ -1,0 +1,32 @@
+{
+  "name": "srl-discord-source-bridge1",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "npm run db:migrate && wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply srl-discord-source-handoff --remote",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260828.1",
+    "typescript": "5.9.3",
+    "wrangler": "4.127.1"
+  },
+  "cloudflare": {
+    "bindings": {
+      "DISCORD_APPLICATION_ID": {
+        "description": "Discord Developer Portal → General Information → APPLICATION ID"
+      },
+      "DISCORD_PUBLIC_KEY": {
+        "description": "Discord Developer Portal → General Information → PUBLIC KEY"
+      },
+      "DISCORD_BOT_TOKEN": {
+        "description": "Discord Developer Portal → Bot → Reset Token。这个值应作为 Secret 保存。"
+      },
+      "SRL_WEB_URL": {
+        "description": "可选：你的 SRL 网页/PWA 地址。留空时仍可使用 Android 深链。"
+      }
+    }
+  }
+}
